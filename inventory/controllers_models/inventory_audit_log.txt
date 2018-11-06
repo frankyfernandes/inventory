@@ -1,0 +1,1 @@
+2018-11-06 08:18:38|insert into car_manufacturer (manufacturer) values('Volvo')|Duplicate entry 'Volvo' for key 'manufacturer'|..failed
