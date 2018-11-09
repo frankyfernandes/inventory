@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2018 at 02:21 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Nov 09, 2018 at 03:44 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -57,6 +59,14 @@ CREATE TABLE `car_model` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `car_model`
+--
+
+INSERT INTO `car_model` (`id`, `manufacturer_id`, `model_name`, `model_quantity`, `model_color`, `date_modified`) VALUES
+(1, 3, 'Baleno', 9, 'White', '2018-11-07 17:57:07'),
+(3, 3, 'Baleno', 4, 'Blue', '2018-11-07 18:01:24');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -72,7 +82,6 @@ ALTER TABLE `car_manufacturer`
 --
 ALTER TABLE `car_model`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `model_name` (`model_name`),
   ADD KEY `fk_manufacturer_id` (`manufacturer_id`);
 
 --
@@ -84,11 +93,13 @@ ALTER TABLE `car_model`
 --
 ALTER TABLE `car_manufacturer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `car_model`
 --
 ALTER TABLE `car_model`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- Constraints for dumped tables
 --
@@ -98,6 +109,7 @@ ALTER TABLE `car_model`
 --
 ALTER TABLE `car_model`
   ADD CONSTRAINT `fk_manufacturer_id` FOREIGN KEY (`manufacturer_id`) REFERENCES `car_manufacturer` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
