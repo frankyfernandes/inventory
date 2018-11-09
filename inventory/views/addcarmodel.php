@@ -8,9 +8,9 @@
                 data:{'getmanufacturers':true},
                 type:'GET',
                 success:function(response){
-                    console.log(response);
+                    //console.log(response);
                     res = JSON.parse(response);
-                    console.log(res);
+                    //console.log(res);
                     if(res.message == undefined){
                         var options = "<option value=''>Select</option>";
                         for(i=0;i<res.length;i++){
@@ -23,11 +23,11 @@
             });
             
             $('#submit').click(function(){
-                var x = $('#carmodelform input').serialize();
-                console.log(x);
+                var formdata= $('#carmodelform').serialize();
+                
                 $.ajax({
                     url:'../controllers_models/Managecarmodel.php',
-                    data:$('#carmodelform input').serialize(),
+                    data:formdata,
                     type:'POST',
                     success:function(response){
                         console.log(response);
@@ -52,7 +52,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Select manufacturer:</label>
-                            <select class="form-control" id="manufacturer" name="manufacturer_name"></select>
+                            <select class="form-control" id="manufacturer" name="manufacturer_id"></select>
                         </div>
                     </div>
                 </div>
